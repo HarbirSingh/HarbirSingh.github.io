@@ -3,87 +3,54 @@ var rightOfCursor = "";
 var noOfClosingBrackets = 0;
 var kString = "";
 var iString = "";
-var dString = "";
 var lastkString = "";
+var tString = "asdfghjkl";
 
-function parseNumber(ch) {
-    leftOfCursor += ch;
-    iString += ch;
-    kString = leftOfCursor + rightOfCursor;;
-    dString = leftOfCursor + "   " + rightOfCursor;
-    katexRender(kString, kScreen);
-    document.getElementById("iScreen").innerHTML = iString;
-    document.getElementById("dScreen").innerHTML = dString;
+function testFunction(ch) {
+    var node = math.parse(iString);
+    node.toTex(); // returns '\sqrt{ {\frac{x}{x} }+{1} }'
+    katex.render(node.toTex(), kScreen);
 }
 
-function parseLetter(ch) {
-    iString += ch;
-    isLetterAtEnd = /.*[a-z]$/.test(leftOfCursor);
-    var temp = "\\" + ch;
-    if (!isLetterAtEnd) {
-        leftOfCursor += temp;
-    }
-    else {
-        leftOfCursor += ch;
-    }
-    kString = leftOfCursor + rightOfCursor;
-    dString = leftOfCursor + "   " + rightOfCursor;
-    document.getElementById("iScreen").innerHTML = iString;
-    document.getElementById("dScreen").innerHTML = dString;
-    katexRender(kString, kScreen);
+function testFunction2() {
+    var node = math.eval(iString);
+    document.getElementById("iScreen").innerHTML = node;
 }
 
-function parseDivivde() {
-    leftOfCursor = "";
-    rightOfCursor = "";
-    noOfClosingBrackets = 0;
-    kString = "0";
-    iString = "0";
-    dString = "0";
-    lastkString = "0";
-    document.getElementById("iScreen").innerHTML = iString;
-    document.getElementById("dScreen").innerHTML = dString;
-    katexRender(kString, kScreen);
+
+function pressedButton(ch) { 
+    iString += ch;
+    print();
+}
+
+function parseAns() {
+    var node = math.eval(iString);
+    document.getElementById("aScreen").innerHTML = node;
+}
+
+function parseSQRT() {
+    iString += "&radic;";
+    leftOfCursor += "\\sqrt";
+    print();
+}
+
+function parsePi() {
+    iString += "&radic;";
+    leftOfCursor += "\\sqrt";
+    print();
 }
 
 function parseCE() {
-    leftOfCursor = "";
-    rightOfCursor = "";
-    noOfClosingBrackets = 0;
     kString = "0";
-    iString = "0";
-    dString = "0";
+    iString = ""; 
     lastkString = "0";
-    document.getElementById("iScreen").innerHTML = iString;
-    document.getElementById("dScreen").innerHTML = dString;
-    katexRender(kString, kScreen);
+    document.getElementById("iScreen").innerHTML = "0"; 
+    katex.render(kString, kScreen);
 }
-
-function katexRender(kStringin, kScreenin) {
-    iserror = false;
-    try {
-        katex.render(kStringin, kScreenin);
-    }
-    catch (e) {
-        iserror = true;
-    }
-    if (!iserror) {
-        lastkString = kStringin;
-    }
-    else {
-        katex.render(lastkString, kScreenin);
-    }
-
+ 
+function pressedBackspace() {
+    iString = iString.slice(0,-1); 
+    print();
 }
+ 
 
-
-
-if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/service-worker.js')
-        .then(function (registration) {
-            console.log('Registration successful, scope is:', registration.scope);
-        })
-        .catch(function (error) {
-            console.log('Service worker registration failed, error:', error);
-        });
-}

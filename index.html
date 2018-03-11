@@ -2,15 +2,20 @@
 <html lang="en">
 
 <head>
-    <title>Bootstrap Example</title>
+    <title>Calculator</title>
     <link rel="manifest" href="manifest.json">
     <meta charset="utf-8">
-    <meta name="theme-color" content="#317EFB"/>
+    <meta name="theme-color" content="#317EFB" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css" integrity="sha384-TEMocfGvRuD1rIAacqrknm5BQZ7W7uWitoih+jMNFXQIbNl16bO8OZmylH/Vi/Ei"
         crossorigin="anonymous">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js" integrity="sha384-jmxIlussZWB7qCuB+PgKG1uLjjxbVVIayPJwi6cG6Zb4YKq0JIw+OMnkkEC7kYCq"
         crossorigin="anonymous"></script>
+    <script src="algebra-0.2.6.min.js"></script>
+    <script src="app.js"></script>
+    <script src="app2.js"></script>
+    <script src="dist/math.js"></script>
+
 </head>
 <style>
     * {
@@ -100,54 +105,54 @@
 <body>
     <div>
         <div class="flex-container" style="height:104px;">
-            <div id="kScreen">0</div>
+            <div id="kScreen" style="width:100vw;">0</div>
         </div>
-        <div class="flex-container" style="height:104px;">
-            <div id="iScreen">0</div>
+        <div class="flex-container" style="height:50px;">
+            <div id="iScreen" style="width:100vw;">0</div>
         </div>
-        <div class="flex-container" style="height:104px;">
-            <textarea id="dScreen" style="width:100vw;">0</textarea>
+        <div class="flex-container" style="height:50px;">
+            <div id="aScreen" style="width:100vw;">0</div>
         </div>
         <div class="flex-container">
-            <button class="button" onclick="parseLetter('q')">Q</button>
-            <button class="button" onclick="parseLetter('w')">W</button>
-            <button class="button" onclick="parseLetter('e')">E</button>
-            <button class="button" onclick="parseLetter('r')">R</button>
-            <button class="button" onclick="parseLetter('t')">T</button>
-            <button class="button" onclick="parseLetter('y')">Y</button>
-            <button class="button" onclick="parseLetter('u')">U</button>
-            <button class="button" onclick="parseLetter('i')">I</button>
-            <button class="button" onclick="parseLetter('o')">O</button>
-            <button class="button" onclick="parseLetter('p')">P</button>
+            <button class="button" onclick="pressedButton('q')">Q</button>
+            <button class="button" onclick="pressedButton('w')">W</button>
+            <button class="button" onclick="pressedButton('e')">E</button>
+            <button class="button" onclick="pressedButton('r')">R</button>
+            <button class="button" onclick="pressedButton('t')">T</button>
+            <button class="button" onclick="pressedButton('y')">Y</button>
+            <button class="button" onclick="pressedButton('u')">U</button>
+            <button class="button" onclick="pressedButton('i')">I</button>
+            <button class="button" onclick="pressedButton('o')">O</button>
+            <button class="button" onclick="pressedButton('p')">P</button>
         </div>
         <div class="flex-container">
             <div style="flex-grow: 1;margin:0px 4px;"></div>
-            <button class="button" onclick="parseLetter('a')" style="flex-grow: 2">A</button>
-            <button class="button" onclick="parseLetter('s')" style="flex-grow: 2">S</button>
-            <button class="button" onclick="parseLetter('d')" style="flex-grow: 2">D</button>
-            <button class="button" onclick="parseLetter('f')" style="flex-grow: 2">F</button>
-            <button class="button" onclick="parseLetter('g')" style="flex-grow: 2">G</button>
-            <button class="button" onclick="parseLetter('h')" style="flex-grow: 2">H</button>
-            <button class="button" onclick="parseLetter('j')" style="flex-grow: 2">J</button>
-            <button class="button" onclick="parseLetter('k')" style="flex-grow: 2">K</button>
-            <button class="button" onclick="parseLetter('l')" style="flex-grow: 2">L</button>
+            <button class="button" onclick="pressedButton('a')" style="flex-grow: 2">A</button>
+            <button class="button" onclick="pressedButton('s')" style="flex-grow: 2">S</button>
+            <button class="button" onclick="pressedButton('d')" style="flex-grow: 2">D</button>
+            <button class="button" onclick="pressedButton('f')" style="flex-grow: 2">F</button>
+            <button class="button" onclick="pressedButton('g')" style="flex-grow: 2">G</button>
+            <button class="button" onclick="pressedButton('h')" style="flex-grow: 2">H</button>
+            <button class="button" onclick="pressedButton('j')" style="flex-grow: 2">J</button>
+            <button class="button" onclick="pressedButton('k')" style="flex-grow: 2">K</button>
+            <button class="button" onclick="pressedButton('l')" style="flex-grow: 2">L</button>
             <div style="flex-grow: 1;margin:0px 4px;"></div>
         </div>
         <div class="grid-container" style="height:108px; ">
-            <button class="button" style="height:104px;" onclick="parseLetter('(')">(</button>
+            <button class="button" style="height:104px;" onclick="pressedButton('(')">(</button>
             <div class="grid-container3" style="height:100px;">
                 <div class="flex-container" style="height:50vi;">
-                    <button class="button" onclick="parseLetter('z')" style="flex-grow: 2">Z</button>
-                    <button class="button" onclick="parseLetter('x')" style="flex-grow: 2">X</button>
-                    <button class="button" onclick="parseLetter('c')" style="flex-grow: 2">C</button>
-                    <button class="button" onclick="parseLetter('v')" style="flex-grow: 2">V</button>
-                    <button class="button" onclick="parseLetter('b')" style="flex-grow: 2">B</button>
-                    <button class="button" onclick="parseLetter('n')" style="flex-grow: 2">N</button>
-                    <button class="button" onclick="parseLetter('m')" style="flex-grow: 2">M</button>
+                    <button class="button" onclick="pressedButton('z')" style="flex-grow: 2">Z</button>
+                    <button class="button" onclick="pressedButton('x')" style="flex-grow: 2">X</button>
+                    <button class="button" onclick="pressedButton('c')" style="flex-grow: 2">C</button>
+                    <button class="button" onclick="pressedButton('v')" style="flex-grow: 2">V</button>
+                    <button class="button" onclick="pressedButton('b')" style="flex-grow: 2">B</button>
+                    <button class="button" onclick="pressedButton('n')" style="flex-grow: 2">N</button>
+                    <button class="button" onclick="pressedButton('m')" style="flex-grow: 2">M</button>
                 </div>
                 <div class="flex-container" style="height:50vi;">
-                    <button class="button" onclick="parseButton('z')" style="flex-grow: 2">Z</button>
-                    <button class="button" onclick="parseButton('x')" style="flex-grow: 2">X</button>
+                    <button class="button" onclick="testFunction('qwerty')" style="flex-grow: 2">test</button>
+                    <button class="button" onclick="testFunction2()" style="flex-grow: 2">test2</button>
                     <button class="button" onclick="parseButton('c')" style="flex-grow: 2">C</button>
                     <button class="button" onclick="parseButton('v')" style="flex-grow: 2">V</button>
                     <button class="button" onclick="parseButton('b')" style="flex-grow: 2">B</button>
@@ -155,51 +160,50 @@
                     <button class="button" onclick="parseButton('m')" style="flex-grow: 2">M</button>
                 </div>
             </div>
-            <button class="button" style="height:104px;" onclick="parseLetter(')')">)</button>
+            <button class="button" style="height:104px;" onclick="pressedButton(')')">)</button>
         </div>
         <div class="grid-container" style="height:108px; ">
-            <button class="button" style="height:104px;" onclick="parseDivide()">/</button>
+            <button class="button" style="height:104px;" onclick="pressedButton('/')">/</button>
             <div class="grid-container3" style="height:100px;">
                 <div class="flex-container" style="height:50vi;">
-                    <button class="button" onclick="parseNumber('^')" style="flex-grow: 2">^</button>
-                    <button class="button" onclick="parseNumber('1')" style="flex-grow: 2">1</button>
-                    <button class="button" onclick="parseNumber('2')" style="flex-grow: 2">2</button>
-                    <button class="button" onclick="parseNumber('3')" style="flex-grow: 2">3</button>
+                    <button class="button" onclick="pressedButton('^')" style="flex-grow: 2">^</button>
+                    <button class="button" onclick="pressedButton('1')" style="flex-grow: 2">1</button>
+                    <button class="button" onclick="pressedButton('2')" style="flex-grow: 2">2</button>
+                    <button class="button" onclick="pressedButton('3')" style="flex-grow: 2">3</button>
                     <button class="button" onclick="parseCE()" style="flex-grow: 2">CE</button>
                 </div>
                 <div class="flex-container" style="height:50vi;">
-                    <button class="button" onclick="parseNumber('b')" style="flex-grow: 2">&radic;</button>
-                    <button class="button" onclick="parseNumber('4')" style="flex-grow: 2">4</button>
-                    <button class="button" onclick="parseNumber('5')" style="flex-grow: 2">5</button>
-                    <button class="button" onclick="parseNumber('6')" style="flex-grow: 2">6</button>
-                    <button class="button" onclick="parseNumber('v')" style="flex-grow: 2">V</button>
+                    <button class="button" onclick="pressedButton('sqrt(')" style="flex-grow: 2">&radic;</button>
+                    <button class="button" onclick="pressedButton('4')" style="flex-grow: 2">4</button>
+                    <button class="button" onclick="pressedButton('5')" style="flex-grow: 2">5</button>
+                    <button class="button" onclick="pressedButton('6')" style="flex-grow: 2">6</button>
+                    <button class="button" onclick="pressedBackspace()" style="flex-grow: 2">&larr;</button>
                 </div>
             </div>
-            <button class="button" style="height:104px;" onclick="parseNumber('*')">*</button>
+            <button class="button" style="height:104px;" onclick="pressedButton('*')">*</button>
         </div>
         <div class="grid-container" style="height:108px; ">
-            <button class="button" style="height:104px;" onclick="parseNumber('-')">-</button>
+            <button class="button" style="height:104px;" onclick="pressedButton('-')">-</button>
             <div class="grid-container3" style="height:100px;">
                 <div class="flex-container" style="height:50vi;">
-                    <button class="button" onclick="parseNumber('b')" style="flex-grow: 2">&pi;</button>
-                    <button class="button" onclick="parseNumber('7')" style="flex-grow: 2">7</button>
-                    <button class="button" onclick="parseNumber('8')" style="flex-grow: 2">8</button>
-                    <button class="button" onclick="parseNumber('9')" style="flex-grow: 2">9</button>
-                    <button class="button" onclick="parseNumber('v')" style="flex-grow: 2">V</button>
+                    <button class="button" onclick="pressedButton('pi')" style="flex-grow: 2">&pi;</button>
+                    <button class="button" onclick="pressedButton('7')" style="flex-grow: 2">7</button>
+                    <button class="button" onclick="pressedButton('8')" style="flex-grow: 2">8</button>
+                    <button class="button" onclick="pressedButton('9')" style="flex-grow: 2">9</button>
+                    <button class="button" onclick="pressedButton('v')" style="flex-grow: 2">V</button>
                 </div>
                 <div class="flex-container" style="height:50vi;">
-                    <button class="button" onclick="parseNumber('b')" style="flex-grow: 2">B</button>
-                    <button class="button" onclick="parseNumber('z')" style="flex-grow: 2">Z</button>
-                    <button class="button" onclick="parseNumber('0')" style="flex-grow: 2">0</button>
-                    <button class="button" onclick="parseNumber('.')" style="flex-grow: 2">.</button>
-                    <button class="button" onclick="parseNumber('v')" style="flex-grow: 2">ans</button>
+                    <button class="button" onclick="pressedButton('b')" style="flex-grow: 2">B</button>
+                    <button class="button" onclick="pressedButton('z')" style="flex-grow: 2">Z</button>
+                    <button class="button" onclick="pressedButton('0')" style="flex-grow: 2">0</button>
+                    <button class="button" onclick="pressedButton('.')" style="flex-grow: 2">.</button>
+                    <button class="button" onclick="parseAns()" style="flex-grow: 2">ans</button>
                 </div>
             </div>
-            <button class="button" style="height:104px;" onclick="parseNumber('+')">+</button>
+            <button class="button" style="height:104px;" onclick="pressedButton('+')">+</button>
         </div>
     </div>
 
-    <script src="app.js"></script>
 
 </body>
 
