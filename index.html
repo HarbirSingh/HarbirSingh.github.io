@@ -72,6 +72,15 @@
         font-size: 30px;
     }
 
+    .flex-container>textarea {
+        background-color: rgb(43, 43, 43);
+        color: rgb(197, 199, 98);
+        margin: 1px;
+        padding-right: 5px;
+        text-align: center;
+        font-size: 30px;
+    }
+
     .button {
         margin: 02px;
         text-align: center;
@@ -90,14 +99,14 @@
 
 <body>
     <div>
-        <div class="flex-container">
-            <div id="kScreen">willchange</div>
+        <div class="flex-container" style="height:104px;">
+            <div id="kScreen">0</div>
         </div>
-        <div class="flex-container">
+        <div class="flex-container" style="height:104px;">
             <div id="iScreen">0</div>
         </div>
-        <div class="flex-container">
-            <div id="dScreen">0</div>
+        <div class="flex-container" style="height:104px;">
+            <textarea id="dScreen" style="width:100vw;">0</textarea>
         </div>
         <div class="flex-container">
             <button class="button" onclick="parseLetter('q')">Q</button>
@@ -146,20 +155,20 @@
                     <button class="button" onclick="parseButton('m')" style="flex-grow: 2">M</button>
                 </div>
             </div>
-            <button class="button" style="height:104px;" onclick="parseButton(')')">)</button>
+            <button class="button" style="height:104px;" onclick="parseLetter(')')">)</button>
         </div>
         <div class="grid-container" style="height:108px; ">
-            <button class="button" style="height:104px;" onclick="parseButton('/')">/</button>
+            <button class="button" style="height:104px;" onclick="parseDivide()">/</button>
             <div class="grid-container3" style="height:100px;">
                 <div class="flex-container" style="height:50vi;">
-                    <button class="button" onclick="parseNumber('sq')" style="flex-grow: 2">sq</button>
+                    <button class="button" onclick="parseNumber('^')" style="flex-grow: 2">^</button>
                     <button class="button" onclick="parseNumber('1')" style="flex-grow: 2">1</button>
                     <button class="button" onclick="parseNumber('2')" style="flex-grow: 2">2</button>
                     <button class="button" onclick="parseNumber('3')" style="flex-grow: 2">3</button>
-                    <button class="button" onclick="parseNumber('^')" style="flex-grow: 2">^</button>
+                    <button class="button" onclick="parseCE()" style="flex-grow: 2">CE</button>
                 </div>
                 <div class="flex-container" style="height:50vi;">
-                    <button class="button" onclick="parseNumber('b')" style="flex-grow: 2">B</button>
+                    <button class="button" onclick="parseNumber('b')" style="flex-grow: 2">&radic;</button>
                     <button class="button" onclick="parseNumber('4')" style="flex-grow: 2">4</button>
                     <button class="button" onclick="parseNumber('5')" style="flex-grow: 2">5</button>
                     <button class="button" onclick="parseNumber('6')" style="flex-grow: 2">6</button>
@@ -172,7 +181,7 @@
             <button class="button" style="height:104px;" onclick="parseNumber('-')">-</button>
             <div class="grid-container3" style="height:100px;">
                 <div class="flex-container" style="height:50vi;">
-                    <button class="button" onclick="parseNumber('b')" style="flex-grow: 2">B</button>
+                    <button class="button" onclick="parseNumber('b')" style="flex-grow: 2">&pi;</button>
                     <button class="button" onclick="parseNumber('7')" style="flex-grow: 2">7</button>
                     <button class="button" onclick="parseNumber('8')" style="flex-grow: 2">8</button>
                     <button class="button" onclick="parseNumber('9')" style="flex-grow: 2">9</button>
@@ -183,7 +192,7 @@
                     <button class="button" onclick="parseNumber('z')" style="flex-grow: 2">Z</button>
                     <button class="button" onclick="parseNumber('0')" style="flex-grow: 2">0</button>
                     <button class="button" onclick="parseNumber('.')" style="flex-grow: 2">.</button>
-                    <button class="button" onclick="parseNumber('v')" style="flex-grow: 2">V</button>
+                    <button class="button" onclick="parseNumber('v')" style="flex-grow: 2">ans</button>
                 </div>
             </div>
             <button class="button" style="height:104px;" onclick="parseNumber('+')">+</button>
