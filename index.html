@@ -1,1 +1,197 @@
-"Hello World" 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Bootstrap Example</title>
+    <link rel="manifest" href="manifest.json">
+    <meta charset="utf-8">
+    <meta name="theme-color" content="#317EFB"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css" integrity="sha384-TEMocfGvRuD1rIAacqrknm5BQZ7W7uWitoih+jMNFXQIbNl16bO8OZmylH/Vi/Ei"
+        crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js" integrity="sha384-jmxIlussZWB7qCuB+PgKG1uLjjxbVVIayPJwi6cG6Zb4YKq0JIw+OMnkkEC7kYCq"
+        crossorigin="anonymous"></script>
+</head>
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        background-color: lightblue;
+        margin: 0px;
+    }
+
+    .flex-container {
+        display: flex;
+        align-items: stretch;
+        background-color: rgb(43, 43, 43);
+    }
+
+    .grid-container {
+        display: grid;
+        grid-template-columns: 15% 70% 15%;
+        background-color: rgb(43, 43, 43);
+        margin: 0px;
+        padding: 0px;
+        grid-gap: 0px;
+    }
+
+    .grid-container2 {
+        display: grid;
+        grid-template-columns: auto auto auto auto auto auto auto;
+        grid-template-rows: auto auto;
+        margin: 0px;
+        padding: 0px;
+        grid-gap: 0px;
+    }
+
+    .grid-container3 {
+        display: grid;
+        grid-template-rows: auto auto;
+        margin: 0px;
+        padding: 0px;
+        grid-gap: 0px;
+    }
+
+    .flex-container2 {
+        display: flex;
+        align-items: stretch;
+        background-color: rgb(43, 43, 43);
+    }
+
+    .flex-container>div {
+        background-color: rgb(43, 43, 43);
+        color: rgb(197, 199, 98);
+        width: 1px;
+        margin: 1px;
+        padding-right: 5px;
+        border-right: 0px;
+        text-align: center;
+        line-height: 75px;
+        font-size: 30px;
+    }
+
+    .button {
+        margin: 02px;
+        text-align: center;
+        font-size: 14px;
+        text-decoration: none;
+        color: rgb(255, 255, 255);
+        background-color: rgb(82, 82, 82);
+        border-radius: 5px;
+        display: inline-block;
+        min-height: 50px;
+        flex: 1;
+        border: 2px solid rgb(82, 82, 82);
+        /* Green */
+    }
+</style>
+
+<body>
+    <div>
+        <div class="flex-container">
+            <div id="kScreen">willgetchanged</div>
+        </div>
+        <div class="flex-container">
+            <div id="iScreen">0</div>
+        </div>
+        <div class="flex-container">
+            <div id="dScreen">0</div>
+        </div>
+        <div class="flex-container">
+            <button class="button" onclick="parseLetter('q')">Q</button>
+            <button class="button" onclick="parseLetter('w')">W</button>
+            <button class="button" onclick="parseLetter('e')">E</button>
+            <button class="button" onclick="parseLetter('r')">R</button>
+            <button class="button" onclick="parseLetter('t')">T</button>
+            <button class="button" onclick="parseLetter('y')">Y</button>
+            <button class="button" onclick="parseLetter('u')">U</button>
+            <button class="button" onclick="parseLetter('i')">I</button>
+            <button class="button" onclick="parseLetter('o')">O</button>
+            <button class="button" onclick="parseLetter('p')">P</button>
+        </div>
+        <div class="flex-container">
+            <div style="flex-grow: 1;margin:0px 4px;"></div>
+            <button class="button" onclick="parseLetter('a')" style="flex-grow: 2">A</button>
+            <button class="button" onclick="parseLetter('s')" style="flex-grow: 2">S</button>
+            <button class="button" onclick="parseLetter('d')" style="flex-grow: 2">D</button>
+            <button class="button" onclick="parseLetter('f')" style="flex-grow: 2">F</button>
+            <button class="button" onclick="parseLetter('g')" style="flex-grow: 2">G</button>
+            <button class="button" onclick="parseLetter('h')" style="flex-grow: 2">H</button>
+            <button class="button" onclick="parseLetter('j')" style="flex-grow: 2">J</button>
+            <button class="button" onclick="parseLetter('k')" style="flex-grow: 2">K</button>
+            <button class="button" onclick="parseLetter('l')" style="flex-grow: 2">L</button>
+            <div style="flex-grow: 1;margin:0px 4px;"></div>
+        </div>
+        <div class="grid-container" style="height:108px; ">
+            <button class="button" style="height:104px;" onclick="parseLetter('(')">(</button>
+            <div class="grid-container3" style="height:100px;">
+                <div class="flex-container" style="height:50vi;">
+                    <button class="button" onclick="parseLetter('z')" style="flex-grow: 2">Z</button>
+                    <button class="button" onclick="parseLetter('x')" style="flex-grow: 2">X</button>
+                    <button class="button" onclick="parseLetter('c')" style="flex-grow: 2">C</button>
+                    <button class="button" onclick="parseLetter('v')" style="flex-grow: 2">V</button>
+                    <button class="button" onclick="parseLetter('b')" style="flex-grow: 2">B</button>
+                    <button class="button" onclick="parseLetter('n')" style="flex-grow: 2">N</button>
+                    <button class="button" onclick="parseLetter('m')" style="flex-grow: 2">M</button>
+                </div>
+                <div class="flex-container" style="height:50vi;">
+                    <button class="button" onclick="parseButton('z')" style="flex-grow: 2">Z</button>
+                    <button class="button" onclick="parseButton('x')" style="flex-grow: 2">X</button>
+                    <button class="button" onclick="parseButton('c')" style="flex-grow: 2">C</button>
+                    <button class="button" onclick="parseButton('v')" style="flex-grow: 2">V</button>
+                    <button class="button" onclick="parseButton('b')" style="flex-grow: 2">B</button>
+                    <button class="button" onclick="parseButton('n')" style="flex-grow: 2">N</button>
+                    <button class="button" onclick="parseButton('m')" style="flex-grow: 2">M</button>
+                </div>
+            </div>
+            <button class="button" style="height:104px;" onclick="parseButton(')')">)</button>
+        </div>
+        <div class="grid-container" style="height:108px; ">
+            <button class="button" style="height:104px;" onclick="parseButton('/')">/</button>
+            <div class="grid-container3" style="height:100px;">
+                <div class="flex-container" style="height:50vi;">
+                    <button class="button" onclick="parseNumber('sq')" style="flex-grow: 2">sq</button>
+                    <button class="button" onclick="parseNumber('1')" style="flex-grow: 2">1</button>
+                    <button class="button" onclick="parseNumber('2')" style="flex-grow: 2">2</button>
+                    <button class="button" onclick="parseNumber('3')" style="flex-grow: 2">3</button>
+                    <button class="button" onclick="parseNumber('^')" style="flex-grow: 2">^</button>
+                </div>
+                <div class="flex-container" style="height:50vi;">
+                    <button class="button" onclick="parseNumber('b')" style="flex-grow: 2">B</button>
+                    <button class="button" onclick="parseNumber('4')" style="flex-grow: 2">4</button>
+                    <button class="button" onclick="parseNumber('5')" style="flex-grow: 2">5</button>
+                    <button class="button" onclick="parseNumber('6')" style="flex-grow: 2">6</button>
+                    <button class="button" onclick="parseNumber('v')" style="flex-grow: 2">V</button>
+                </div>
+            </div>
+            <button class="button" style="height:104px;" onclick="parseNumber('*')">*</button>
+        </div>
+        <div class="grid-container" style="height:108px; ">
+            <button class="button" style="height:104px;" onclick="parseNumber('-')">-</button>
+            <div class="grid-container3" style="height:100px;">
+                <div class="flex-container" style="height:50vi;">
+                    <button class="button" onclick="parseNumber('b')" style="flex-grow: 2">B</button>
+                    <button class="button" onclick="parseNumber('7')" style="flex-grow: 2">7</button>
+                    <button class="button" onclick="parseNumber('8')" style="flex-grow: 2">8</button>
+                    <button class="button" onclick="parseNumber('9')" style="flex-grow: 2">9</button>
+                    <button class="button" onclick="parseNumber('v')" style="flex-grow: 2">V</button>
+                </div>
+                <div class="flex-container" style="height:50vi;">
+                    <button class="button" onclick="parseNumber('b')" style="flex-grow: 2">B</button>
+                    <button class="button" onclick="parseNumber('z')" style="flex-grow: 2">Z</button>
+                    <button class="button" onclick="parseNumber('0')" style="flex-grow: 2">0</button>
+                    <button class="button" onclick="parseNumber('.')" style="flex-grow: 2">.</button>
+                    <button class="button" onclick="parseNumber('v')" style="flex-grow: 2">V</button>
+                </div>
+            </div>
+            <button class="button" style="height:104px;" onclick="parseNumber('+')">+</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+
+</body>
+
+</html>
