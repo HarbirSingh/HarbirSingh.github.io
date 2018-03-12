@@ -1,9 +1,9 @@
 {
   "name": "Calculator",
   "short_name": "Calc",
-  "theme_color": "#317EFB",
-  "background_color": "#2196f3",
-  "display": "browser",
+  "theme_color": "#444444",
+  "background_color": "#444444",
+  "display": "fullscreen",
   "orientation": "portrait",
   "Scope": "/",
   "start_url": "/",

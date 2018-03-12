@@ -42,19 +42,19 @@ function parseSQRT() {
     print();
 }
  
-// iString.addEventListener('click', function() {
-//     clickCount++;
-//     if (clickCount === 1) {
-//         singleClickTimer = setTimeout(function() {
-//             clickCount = 0;
-//             pressedButton('(');
-//         }, 200);
-//     } else if (clickCount === 2) {
-//         clearTimeout(singleClickTimer);
-//         clickCount = 0;
-//         pressedButton('[');
-//     }
-// }, false);
+leftBracket.addEventListener('click', function() {
+    clickCount++;
+    if (clickCount === 1) {
+        singleClickTimer = setTimeout(function() {
+            clickCount = 0;
+            pressedButton('(');
+        }, 200);
+    } else if (clickCount === 2) {
+        clearTimeout(singleClickTimer);
+        clickCount = 0;
+        pressedButton('[');
+    }
+}, false);
  
 rightBracket.addEventListener('click', function() {
     clickCount++;
