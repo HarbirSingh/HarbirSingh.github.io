@@ -11,7 +11,7 @@
         crossorigin="anonymous">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js" integrity="sha384-jmxIlussZWB7qCuB+PgKG1uLjjxbVVIayPJwi6cG6Zb4YKq0JIw+OMnkkEC7kYCq"
         crossorigin="anonymous"></script>
-    <script src="algebra-0.2.6.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
     <script src="app.js"></script>
     <script src="app2.js"></script>
     <script src="dist/math.js"></script>
@@ -108,7 +108,7 @@
             <div id="kScreen" style="width:100vw;">0</div>
         </div>
         <div class="flex-container" style="height:50px;">
-            <div id="iScreen" style="width:100vw;">0</div>
+            <div id="iScreen" style="width:100vw; line-height:50px;">0</div>
         </div>
         <div class="flex-container" style="height:50px;">
             <div id="aScreen" style="width:100vw;">0</div>
@@ -139,7 +139,7 @@
             <div style="flex-grow: 1;margin:0px 4px;"></div>
         </div>
         <div class="grid-container" style="height:108px; ">
-            <button class="button" style="height:104px;" onclick="pressedButton('(')">(</button>
+            <button class="button" id="leftBracket" style="height:104px; font-size: 28px;">(</button>
             <div class="grid-container3" style="height:100px;">
                 <div class="flex-container" style="height:50vi;">
                     <button class="button" onclick="pressedButton('z')" style="flex-grow: 2">Z</button>
@@ -160,10 +160,10 @@
                     <button class="button" onclick="parseButton('m')" style="flex-grow: 2">M</button>
                 </div>
             </div>
-            <button class="button" style="height:104px;" onclick="pressedButton(')')">)</button>
+            <button class="button" id="rightBracket" style="height:104px; font-size: 28px;">)</button>
         </div>
         <div class="grid-container" style="height:108px; ">
-            <button class="button" style="height:104px;" onclick="pressedButton('/')">/</button>
+            <button class="button" style="height:104px; font-size: 28px;" onclick="pressedButton('/')">/</button>
             <div class="grid-container3" style="height:100px;">
                 <div class="flex-container" style="height:50vi;">
                     <button class="button" onclick="pressedButton('^')" style="flex-grow: 2">^</button>
@@ -180,10 +180,10 @@
                     <button class="button" onclick="pressedBackspace()" style="flex-grow: 2">&larr;</button>
                 </div>
             </div>
-            <button class="button" style="height:104px;" onclick="pressedButton('*')">*</button>
+            <button class="button" style="height:104px; font-size: 28px;" onclick="pressedButton('*')">*</button>
         </div>
         <div class="grid-container" style="height:108px; ">
-            <button class="button" style="height:104px;" onclick="pressedButton('-')">-</button>
+            <button class="button" style="height:104px; font-size: 28px;" onclick="pressedButton('-')">-</button>
             <div class="grid-container3" style="height:100px;">
                 <div class="flex-container" style="height:50vi;">
                     <button class="button" onclick="pressedButton('pi')" style="flex-grow: 2">&pi;</button>
@@ -200,11 +200,12 @@
                     <button class="button" onclick="parseAns()" style="flex-grow: 2">ans</button>
                 </div>
             </div>
-            <button class="button" style="height:104px;" onclick="pressedButton('+')">+</button>
+            <button class="button" style="height:104px; font-size: 28px;" onclick="pressedButton('+')">+</button>
         </div>
     </div>
 
 
+    <script src="app.js"></script>
 </body>
 
 </html>

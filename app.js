@@ -5,16 +5,24 @@ var kString = "";
 var iString = "";
 var lastkString = "";
 var tString = "asdfghjkl";
+$(document).ready(
+    function()
+    {
+        var iString = document.getElementById("iScreen");
+        var leftBracket = document.getElementById("leftBracket"); 
+        var rightBracket = document.getElementById("leftBracket"); 
+    }
+);
+var clickCount = 0;
+
 
 function testFunction(ch) {
-    var node = math.parse(iString);
-    node.toTex(); // returns '\sqrt{ {\frac{x}{x} }+{1} }'
-    katex.render(node.toTex(), kScreen);
+    
 }
 
 function testFunction2() {
     var node = math.eval(iString);
-    document.getElementById("iScreen").innerHTML = node;
+    iScreen.innerHTML = node;
 }
 
 
@@ -33,6 +41,34 @@ function parseSQRT() {
     leftOfCursor += "\\sqrt";
     print();
 }
+ 
+// iString.addEventListener('click', function() {
+//     clickCount++;
+//     if (clickCount === 1) {
+//         singleClickTimer = setTimeout(function() {
+//             clickCount = 0;
+//             pressedButton('(');
+//         }, 200);
+//     } else if (clickCount === 2) {
+//         clearTimeout(singleClickTimer);
+//         clickCount = 0;
+//         pressedButton('[');
+//     }
+// }, false);
+ 
+rightBracket.addEventListener('click', function() {
+    clickCount++;
+    if (clickCount === 1) {
+        singleClickTimer = setTimeout(function() {
+            clickCount = 0;
+            pressedButton(')');
+        }, 200);
+    } else if (clickCount === 2) {
+        clearTimeout(singleClickTimer);
+        clickCount = 0;
+        pressedButton(']');
+    }
+}, false);
 
 function parsePi() {
     iString += "&radic;";
@@ -44,7 +80,7 @@ function parseCE() {
     kString = "0";
     iString = ""; 
     lastkString = "0";
-    document.getElementById("iScreen").innerHTML = "0"; 
+    iScreen.innerHTML = "0"; 
     katex.render(kString, kScreen);
 }
  
