@@ -1,0 +1,81 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: lightblue;
+    margin: 0px;
+}
+
+.flex-container {
+    display: flex;
+    align-items: stretch;
+    background-color: #222222;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 15% 70% 15%;
+    background-color: #222222;
+    margin: 0px;
+    padding: 0px;
+    grid-gap: 0px;
+}
+
+.grid-container2 {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto auto;
+    grid-template-rows: auto auto;
+    margin: 0px;
+    padding: 0px;
+    grid-gap: 0px;
+}
+
+.grid-container3 {
+    display: grid;
+    grid-template-rows: auto auto;
+    margin: 0px;
+    padding: 0px;
+    grid-gap: 0px;
+}
+
+.flex-container2 {
+    display: flex;
+    align-items: stretch;
+    background-color: #222222;
+}
+
+.flex-container>div {
+    background-color: #222222;
+    color: rgb(197, 199, 98);
+    width: 1px;
+    margin: 1px; 
+    border: 15px;
+    border-color: azure;
+    text-align: center;
+    line-height: 75px;
+    font-size: 30px;
+}
+
+.flex-container>textarea {
+    background-color: #222222;
+    color: rgb(197, 199, 98);
+    margin: 1px;
+    padding-right: 5px;
+    text-align: center;
+    font-size: 30px;
+}
+
+.button {
+    margin: 02px;
+    text-align: center;
+    font-size: 14px;
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    background-color: #444444;
+    border-radius: 5px;
+    display: inline-block;
+    flex: 1;
+    border: 2px solid #444444;
+    /* Green */
+}
