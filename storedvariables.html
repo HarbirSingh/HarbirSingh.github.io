@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Calculator</title>
+    <script>
+        window.onload = function () {
+
+            var mytable = document.getElementById("mytable");
+
+            // IE7 only supports appending rows to tbody
+            var tbody = document.createElement("tbody");
+            var variables2 = JSON.parse(localStorage.getItem('variables'));
+            for (var key in variables2) {
+                var tr = document.createElement("tr");
+                if (variables2.hasOwnProperty(key)) {
+                    //Stringbig += (key + " : " + variables2[key] + "<br>");
+                    var td = document.createElement("td");
+                    var txt = document.createTextNode(key);
+                    td.appendChild(txt);
+                    tr.appendChild(td);
+                    var td2 = document.createElement("td2");
+                    var txt = document.createTextNode(variables2[key]);
+                    td2.appendChild(txt);
+                    tr.appendChild(td2);
+                }
+                tbody.appendChild(tr);
+            }
+            mytable.appendChild(tbody);
+        }
+    </script>
+</head>
+
+<body>
+    <table id="mytable">
+        <tr>
+            <th>Variable</th>
+            <th>Value</th>
+        </tr>
+    </table>
+    <a href="index.html">Go back</a>
+
+    
+</body>
+
+</html>

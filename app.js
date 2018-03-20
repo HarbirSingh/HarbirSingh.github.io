@@ -8,6 +8,10 @@ var tString = "asdfghjkl";
 var ans1 = "";
 var ans2 = "";
 var ans3 = "";
+var parser = math.parser();
+console.log(typeof(JSON.parse(localStorage.getItem('variables')))===typeof(parser.scope));console.log(typeof(parser.scope));
+parser.scope = JSON.parse(localStorage.getItem('variables'));
+console.log(parser.scope);
 $(document).ready(
     function () {
         var iString = document.getElementById("iScreen");
@@ -18,7 +22,12 @@ $(document).ready(
 var clickCount = 0;
 
 
-function testFunction(ch) {
+function storevariables() {
+    localStorage.setItem('variables',JSON.stringify(parser.scope));
+}
+
+function testFunction() {
+    console.log(parser.scope);
 
 }
 
@@ -50,7 +59,7 @@ function parseAns() {
     document.getElementById("aScreen2").innerHTML = document.getElementById("aScreen1").innerHTML;
     var isError = false;
     try {
-        var node = math.eval(iString);
+        var node = parser.eval(iString);
     } catch (e) {
         isError = true;
     }

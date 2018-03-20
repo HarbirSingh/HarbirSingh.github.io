@@ -13,21 +13,22 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js" integrity="sha384-jmxIlussZWB7qCuB+PgKG1uLjjxbVVIayPJwi6cG6Zb4YKq0JIw+OMnkkEC7kYCq"
         crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script> 
     <script src="app.js"></script>
     <script src="app2.js"></script>
-    <script src="dist/math.js"></script>
+    <script src="dist/math.js"></script> 
 
 </head>
 
 
-<body>
+<body> 
     <script src="angle_config.js"></script>
     <div style="height:100vh;">
         <div class="flex-container" >
             <div id="kScreen" style="width:100vw; overflow:auto; height:14vh;">0</div>
         </div>
         <div class="flex-container" style="height:5vh;">
-            <div id="iScreen" style="width:100vw; line-height:5vh; text-align:left; padding-left:10px;">0</div>
+            <div id="iScreen" style="width:100vw; line-height:5vh; overflow:auto; text-align:left; font: 20px cambria, sans-serif; padding-left:10px;">0</div>
         </div>
         <div class="flex-container" style="height:8vh;">
             <div id="aScreen3" style="width:100vw; font-size:16px;" onclick="enterAnsValue('aScreen3')">0</div>
@@ -54,7 +55,7 @@
             </div>
             <button class="button" style="font-size: 28px;" onclick="pressedButton('*')">*</button>
         </div>
-        <div id="constants1" style="display:none;" class="flex-container">
+        <div id="constants1" style="height:9vh; display:none;" class="flex-container">
             <button class="button" onclick="pressedConstant('9.807')">g</button>
             <button class="button" onclick="pressedConstant('6.625e-34')">h</button>
             <button class="button" onclick="pressedConstant('2.998e8')">c</button>
@@ -66,7 +67,7 @@
             <button class="button" onclick="pressedConstant('o')">O</button>
             <button class="button" onclick="pressedConstant('p')">P</button>
         </div>
-        <div id="constants2" style="display:none;" class="flex-container">
+        <div id="constants2" style="height:9vh; display:none;" class="flex-container">
             <button class="button" onclick="pressedConstant('6.674e-11')">G</button>
             <button class="button" onclick="pressedConstant('w')">W</button>
             <button class="button" onclick="pressedConstant('e')">E</button>
@@ -86,14 +87,14 @@
                     <button class="button" onclick="pressedButton('7')" style="flex-grow: 2">7</button>
                     <button class="button" onclick="pressedButton('8')" style="flex-grow: 2">8</button>
                     <button class="button" onclick="pressedButton('9')" style="flex-grow: 2">9</button>
-                    <button id="degButton" class="button" onclick="degreeMode()" style="flex-grow: 2">deg</button>
+                    <button id="degButton" class="button" onclick="degreeMode()" style="flex-grow: 2"><script>document.getElementById('degButton').innerText =  localStorage.getItem('drg');</script></button>
                 </div>
                 <div class="flex-container" style="height:50vi;">
-                    <button class="button" onclick="pressedButton('%')" style="flex-grow: 2">%</button>
+                    <button class="button" onclick="pressedButton('&int;')" style="flex-grow: 2">&Integral;</button>
                     <button class="button" onclick="pressedButton(',')" style="flex-grow: 2">,</button>
                     <button class="button" onclick="pressedButton('0')" style="flex-grow: 2">0</button>
                     <button class="button" onclick="pressedButton('.')" style="flex-grow: 2">.</button>
-                    <button id="equalButton2" class="button" style="flex-grow: 2">=</button>
+                    <button id="equalButton2" onclick="pressedButton('=')" class="button" style="flex-grow: 2">=</button>
                 </div>
             </div>
             <button class="button" style=" font-size: 28px;" onclick="pressedButton('+')">+</button>
@@ -111,7 +112,7 @@
             <button class="button" onclick="pressedButton('p')">P</button>
         </div>
         <div  style="height:9vh;" class="flex-container">
-            <div style="flex-grow: 1;margin:0px 4px;"></div>
+            <a href="storedvariables.html" onclick="storevariables()" style="flex-grow: 1;margin:0px 4px;"></a>
             <button class="button" onclick="pressedButton('a')" style="flex-grow: 2">A</button>
             <button class="button" onclick="pressedButton('s')" style="flex-grow: 2">S</button>
             <button class="button" onclick="pressedButton('d')" style="flex-grow: 2">D</button>
@@ -136,9 +137,9 @@
                     <button class="button" onclick="pressedButton('m')" style="flex-grow: 2">M</button>
                 </div>
                 <div class="flex-container" style="height:50vi;">
-                    <button class="button" onclick="testFunction('qwerty')" style="flex-grow: 2">t</button>
-                    <button class="button" onclick="testFunction2()" style="flex-grow: 2">t</button> 
-                    <button id="equalButton" class="button" onclick="parseButton('m')" style="flex-grow: 8">=</button>
+                    <button class="button" onclick="testFunction()" style="flex-grow: 2">t</button>
+                    <button class="button" onclick="loadFile()" style="flex-grow: 2">t</button> 
+                    <button id="equalButton" class="button" onclick="parseAns()" style="flex-grow: 8">=</button>
                 </div>
             </div>
             <button class="button" id="rightBracket" style="font-size: 28px;">)</button>
@@ -146,7 +147,7 @@
         <div class="grid-container" style="height:0.5vh;"></div>
     </div>
 
-    <script src="app.js"></script>
+    <script src="app.js"></script> 
 
 </body>
 <footer>

@@ -4,8 +4,6 @@ var replacements = {};
 var config = {
     angles: 'deg' // 'rad', 'deg', 'grad'
 };
-var angle_array = ['rad', 'deg', 'grad'];
-var angle_array_index = 1;
 // create trigonometric functions replacing the input depending on angle config
 ['sin', 'cos', 'tan', 'sec', 'cot', 'csc'].forEach(function (name) {
     var fn = math[name]; // the original function
@@ -68,10 +66,27 @@ math.import(replacements, {
 });
 
 function degreeMode() {
-    angle_array_index++;
-    if (angle_array_index > 2) {
-        angle_array_index = 0;
-    }
-    config.angles = angle_array[angle_array_index];
-    document.getElementById('degButton').innerHTML = angle_array[angle_array_index];
+    var drgin = localStorage.getItem('drg');
+    switch (drgin) {
+        case 'deg':
+            config.angles = 'rad';
+            document.getElementById('degButton').innerHTML = 'rad';
+            localStorage.setItem('drg', 'rad');
+            break;
+
+        case 'rad':
+            config.angles = 'grad';
+            document.getElementById('degButton').innerHTML = 'grad';
+            localStorage.setItem('drg', 'grad');
+            break;
+
+        case 'grad':
+            config.angles = 'deg';
+            document.getElementById('degButton').innerHTML = 'deg';
+            localStorage.setItem('drg', 'deg');
+            break;
+
+        default:
+            break;
+    } 
 };
