@@ -5,25 +5,25 @@ var kString = "";
 var iString = "";
 var lastkString = "";
 var tString = "asdfghjkl";
-var ans1 = "";
-var ans2 = "";
-var ans3 = "";
 var parser = math.parser();
-console.log(typeof(JSON.parse(localStorage.getItem('variables')))===typeof(parser.scope));console.log(typeof(parser.scope));
-parser.scope = JSON.parse(localStorage.getItem('variables'));
+console.log(typeof (JSON.parse(localStorage.getItem('variables'))) === typeof (parser.scope));
+console.log(typeof (parser.scope));
+if (localStorage.getItem('variables') != null) {
+    parser.scope = JSON.parse(localStorage.getItem('variables'));
+} else {
+    parser.scope = {
+        h: 5
+    };
+}
 console.log(parser.scope);
-$(document).ready(
-    function () {
-        var iString = document.getElementById("iScreen");
-        var leftBracket = document.getElementById("leftBracket");
-        var rightBracket = document.getElementById("rightBracket");
-    }
-);
+var iScreen = document.getElementById("iScreen");
+var leftBracket = document.getElementById("leftBracket");
+var rightBracket = document.getElementById("rightBracket");
 var clickCount = 0;
 
 
 function storevariables() {
-    localStorage.setItem('variables',JSON.stringify(parser.scope));
+    localStorage.setItem('variables', JSON.stringify(parser.scope));
 }
 
 function testFunction() {
@@ -32,8 +32,7 @@ function testFunction() {
 }
 
 function testFunction2() {
-    var node = math.eval(iString);
-    iScreen.innerHTML = node;
+    console.log(JSON.stringify(parser.scope));
 }
 
 function pressedPi() {
@@ -60,6 +59,8 @@ function parseAns() {
     var isError = false;
     try {
         var node = parser.eval(iString);
+        var ans = math.format(node, 4);
+        console.log(parser.eval(iString));
     } catch (e) {
         isError = true;
     }
@@ -67,7 +68,7 @@ function parseAns() {
         document.getElementById("aScreen1").innerHTML = "ansError";
         //console.log(document.getElementById("aScreen1").innerHTML);
     } else {
-        document.getElementById("aScreen1").innerHTML = node;
+        document.getElementById("aScreen1").innerHTML = ans;
     }
 }
 
@@ -144,6 +145,10 @@ function parseCE() {
 }
 
 function pressedBackspace() {
-    iString = iString.slice(0, -1);
-    print();
+    if (iString.length > 1) {
+        iString = iString.slice(0, -1);
+        print();
+    } else if (iString.length == 1) {
+        parseCE();
+    }
 }
