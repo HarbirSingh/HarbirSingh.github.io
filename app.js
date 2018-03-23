@@ -8,11 +8,27 @@ var tString = "asdfghjkl";
 var parser = math.parser();
 console.log(typeof (JSON.parse(localStorage.getItem('variables'))) === typeof (parser.scope));
 console.log(typeof (parser.scope));
+if (localStorage.getItem('drg') == null) {
+    localStorage.setItem('drg', 'deg');
+    console.log("fasif");
+}
 if (localStorage.getItem('variables') != null) {
     parser.scope = JSON.parse(localStorage.getItem('variables'));
 } else {
     parser.scope = {
-        h: 5
+        h: 6.626e-34,
+        g: 9.807,
+        Po: 101325,
+        Na: 6.022e23,
+        k: 1.38e-23,
+        F: 9.648e4,
+        R: 8.314,
+        G: 6.674e-11,
+        me: 9.109e-31,
+        mp: 1.6726e-27,
+        mn: 1.675e-27,
+        co: 2.998e8,
+
     };
 }
 console.log(parser.scope);
@@ -35,15 +51,15 @@ function testFunction2() {
     console.log(JSON.stringify(parser.scope));
 }
 
-function pressedPi() {
-    var constants = document.getElementById("constants");
-
-}
-
 
 function pressedButton(ch) {
     iString += ch;
     print();
+}
+
+function pressedPi() {
+    document.getElementById("constants1").style.display = "flex";
+    document.getElementById("constants2").style.display = "flex";
 }
 
 function pressedConstant(ch) {
@@ -51,6 +67,23 @@ function pressedConstant(ch) {
     document.getElementById("constants2").style.display = "none";
     iString += ch;
     print();
+}
+
+function plot() {
+    document.getElementById("plot").style.display = "flex";
+    try {
+        functionPlot({
+            target: '#plot',
+            data: [{
+                fn: iString,
+                sampler: 'builtIn', // this will make function-plot use the evaluator of math.js
+                graphType: 'polyline'
+            }]
+        });
+    } catch (err) {
+        console.log(err);
+        alert(err);
+    }
 }
 
 function parseAns() {
@@ -130,11 +163,6 @@ equalButton.addEventListener('click', function () {
         console.log("You went too far.");
     }
 }, false);
-
-function pressedPi() {
-    document.getElementById("constants1").style.display = "flex";
-    document.getElementById("constants2").style.display = "flex";
-}
 
 function parseCE() {
     kString = "0";

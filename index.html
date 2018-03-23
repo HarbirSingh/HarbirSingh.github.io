@@ -10,16 +10,19 @@
     <link rel="stylesheet" type="text/css" href="mystyle.css">
     <link rel="stylesheet" type="text/css" href="importjs/katex.min.css">
     <script src="app2.js"></script>
-    <script src="importjs/math.min.js"></script> 
-    <script src="importjs/katex.min.js"></script> 
+    <script src="importjs/math.min.js"></script>
+    <script src="importjs/katex.min.js"></script>
+    <script src="d3.min.js"></script>
+    <script src="https://wzrd.in/standalone/function-plot@1.14.0"></script>
 
 </head>
 
 
-<body> 
+<body style="overflow-y:hidden;  max-width:100vw;">
+    <div id="plot" style="height:80vh; display:none;  max-width:100vw;"></div>
     <script src="angle_config.js"></script>
     <div style="height:100vh;">
-        <div class="flex-container" >
+        <div class="flex-container">
             <div id="kScreen" style="width:100vw; overflow:auto; height:14vh;">0</div>
         </div>
         <div class="flex-container" style="height:5vh;">
@@ -82,10 +85,14 @@
                     <button class="button" onclick="pressedButton('7')" style="flex-grow: 2">7</button>
                     <button class="button" onclick="pressedButton('8')" style="flex-grow: 2">8</button>
                     <button class="button" onclick="pressedButton('9')" style="flex-grow: 2">9</button>
-                    <button id="degButton" class="button" onclick="degreeMode()" style="flex-grow: 2"><script>document.getElementById('degButton').innerText =  localStorage.getItem('drg');</script></button>
+                    <button id="degButton" class="button" onclick="degreeMode()" style="flex-grow: 2">
+                        <script>
+                            document.getElementById('degButton').innerText = localStorage.getItem('drg');
+                        </script>
+                    </button>
                 </div>
                 <div class="flex-container" style="height:50vi;">
-                    <button class="button" onclick="pressedButton('&int;')" style="flex-grow: 2">&Integral;</button>
+                    <button class="button" onclick="plot()" style="flex-grow: 2">&acd;</button>
                     <button class="button" onclick="pressedButton(',')" style="flex-grow: 2">,</button>
                     <button class="button" onclick="pressedButton('0')" style="flex-grow: 2">0</button>
                     <button class="button" onclick="pressedButton('.')" style="flex-grow: 2">.</button>
@@ -106,7 +113,7 @@
             <button class="button" onclick="pressedButton('o')">O</button>
             <button class="button" onclick="pressedButton('p')">P</button>
         </div>
-        <div  style="height:9vh;" class="flex-container">
+        <div style="height:9vh;" class="flex-container">
             <a href="storedvariables.html" onclick="storevariables()" style="flex-grow: 1;margin:0px 4px;"></a>
             <button class="button" onclick="pressedButton('a')" style="flex-grow: 2">A</button>
             <button class="button" onclick="pressedButton('s')" style="flex-grow: 2">S</button>
@@ -133,7 +140,7 @@
                 </div>
                 <div class="flex-container" style="height:50vi;">
                     <button class="button" onclick="testFunction()" style="flex-grow: 2">t</button>
-                    <button class="button" onclick="testFunction2()" style="flex-grow: 2">t</button> 
+                    <button class="button" onclick="testFunction2()" style="flex-grow: 2">t</button>
                     <button id="equalButton" class="button" style="flex-grow: 8">=</button>
                 </div>
             </div>
@@ -142,10 +149,11 @@
         <div class="grid-container" style="height:0.5vh;"></div>
     </div>
 
-    <script src="app.js"></script> 
+    <script src="app.js"></script>
 
 </body>
 <footer>
-    
+
 </footer>
+
 </html>
