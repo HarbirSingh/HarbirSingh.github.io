@@ -6,8 +6,8 @@ var iString = "";
 var lastkString = "";
 var tString = "asdfghjkl";
 var parser = math.parser();
-console.log(typeof (JSON.parse(localStorage.getItem('variables'))) === typeof (parser.scope));
-console.log(typeof (parser.scope));
+console.log(devicePixelRatio);
+document.getElementById("iScreen").innerHTML = devicePixelRatio;
 if (localStorage.getItem('drg') == null) {
     localStorage.setItem('drg', 'deg');
     console.log("fasif");
@@ -61,6 +61,9 @@ function pressedPi() {
     document.getElementById("constants1").style.display = "flex";
     document.getElementById("constants2").style.display = "flex";
 }
+function pressedkScreen() {
+    document.getElementById("plot").style.display = "none";
+}
 
 function pressedConstant(ch) {
     document.getElementById("constants1").style.display = "none";
@@ -73,15 +76,18 @@ function plot() {
     document.getElementById("plot").style.display = "flex";
     try {
         functionPlot({
-            width: 400,
-            heoght: 400,
+            width: screen.width + 20,
+            height: screen.width,
             target: '#plot',
+            yAxis: {domain: [-1, 1]},
+            xAxis: {domain: [8, 24]},
             data: [{
                 fn: iString,
                 sampler: 'builtIn', // this will make function-plot use the evaluator of math.js
-                graphType: 'polyline'
+                graphType: 'polyline',
+                color: 'red'
             }],
-            grid:true
+            grid: true
         });
     } catch (err) {
         console.log(err);
