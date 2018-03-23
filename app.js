@@ -73,12 +73,15 @@ function plot() {
     document.getElementById("plot").style.display = "flex";
     try {
         functionPlot({
+            width: 400,
+            heoght: 400,
             target: '#plot',
             data: [{
                 fn: iString,
                 sampler: 'builtIn', // this will make function-plot use the evaluator of math.js
                 graphType: 'polyline'
-            }]
+            }],
+            grid:true
         });
     } catch (err) {
         console.log(err);
