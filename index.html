@@ -145,51 +145,51 @@
 
     <script src="app.js"></script>
     <link rel="stylesheet" type="text/css" href="importjs/katex.min.css">
-    <!-- <script src="app2.js"></script> -->
+    <script src="app2.js"></script>
     <script src="importjs/math.min.js"></script>
     <script src="importjs/katex.min.js"></script>
     <script src="importjs/d3.min.js"></script>
     <script src="importjs/function-plot@1.14.0"></script>
     <script>
-        // make the whole serviceworker process into a promise so later on we can
-        // listen to it and in case new content is available a toast will be shown
-        window.isUpdateAvailable = new Promise(function (resolve, reject) {
-            // lazy way of disabling service workers while developing
-            if ('serviceWorker' in navigator && ['localhost', '127'].indexOf(location.hostname) === -1) {
-                // register service worker file
-                navigator.serviceWorker.register('/service-worker.js')
-                    .then(reg => {
-                        reg.onupdatefound = () => {
-                            const installingWorker = reg.installing;
-                            installingWorker.onstatechange = () => {
-                                switch (installingWorker.state) {
-                                    case 'installed':
-                                        if (navigator.serviceWorker.controller) {
-                                            // new update available
-                                            resolve(true);
-                                        } else {
-                                            // no update available
-                                            resolve(false);
-                                        }
-                                        break;
-                                }
-                            };
-                        };
-                    })
-                    .catch(err => console.error('[SW ERROR]', err));
-            }
-        });
-        window['isUpdateAvailable']
-            .then(isAvailable => {
-                if (isAvailable) {
-                    const toast = this.toastCtrl.create({
-                        message: 'New Update available! Reload the webapp to see the latest juicy changes.',
-                        position: 'bottom',
-                        showCloseButton: true,
-                    });
-                    toast.present();
-                }
-            });
+        // // make the whole serviceworker process into a promise so later on we can
+        // // listen to it and in case new content is available a toast will be shown
+        // window.isUpdateAvailable = new Promise(function (resolve, reject) {
+        //     // lazy way of disabling service workers while developing
+        //     if ('serviceWorker' in navigator && ['localhost', '127'].indexOf(location.hostname) === -1) {
+        //         // register service worker file
+        //         navigator.serviceWorker.register('/service-worker.js')
+        //             .then(reg => {
+        //                 reg.onupdatefound = () => {
+        //                     const installingWorker = reg.installing;
+        //                     installingWorker.onstatechange = () => {
+        //                         switch (installingWorker.state) {
+        //                             case 'installed':
+        //                                 if (navigator.serviceWorker.controller) {
+        //                                     // new update available
+        //                                     resolve(true);
+        //                                 } else {
+        //                                     // no update available
+        //                                     resolve(false);
+        //                                 }
+        //                                 break;
+        //                         }
+        //                     };
+        //                 };
+        //             })
+        //             .catch(err => console.error('[SW ERROR]', err));
+        //     }
+        // });
+        // window['isUpdateAvailable']
+        //     .then(isAvailable => {
+        //         if (isAvailable) {
+        //             const toast = this.toastCtrl.create({
+        //                 message: 'New Update available! Reload the webapp to see the latest juicy changes.',
+        //                 position: 'bottom',
+        //                 showCloseButton: true,
+        //             });
+        //             toast.present();
+        //         }
+        //     });
         // Update:
         // this also can be incorporated right into e.g. your run() function in angular,
         // to avoid using the global namespace for such a thing.
