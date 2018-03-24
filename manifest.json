@@ -1,6 +1,6 @@
 {
-  "name": "Calculator",
-  "short_name": "Calc",
+  "name": "Engineering Calculator",
+  "short_name": "ECalc",
   "theme_color": "#444444",
   "background_color": "#444444",
   "display": "fullscreen",

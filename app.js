@@ -189,3 +189,10 @@ function pressedBackspace() {
         parseCE();
     }
 }
+
+function print() {
+    document.getElementById("iScreen").innerHTML = iString;
+    var node = math.parse(iString);
+    node.toTex(); // returns '\sqrt{ {\frac{x}{x} }+{1} }'
+    katex.render(node.toTex(), kScreen);
+}
