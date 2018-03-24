@@ -10,7 +10,6 @@ self.addEventListener('install', function (e) {
                 '/index.html',
                 '/angle_config.js',
                 '/app.js',
-                '/app2.js',
                 '/importjs/d3.min.js',
                 '/importjs/function-plot@1.14.0',
                 '/importjs/katex.min.css',
