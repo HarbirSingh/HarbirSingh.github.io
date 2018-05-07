@@ -23,12 +23,7 @@ if (localStorage.getItem('variables') != null) {
         k: 1.38e-23,
         F: 9.648e4,
         R: 8.314,
-        G: 6.674e-11,
-        me: 9.109e-31,
-        mp: 1.6726e-27,
-        mn: 1.675e-27,
-        co: 2.998e8,
-
+        "G": 6.674e-11,
     };
 }
 console.log(parser.scope);
@@ -58,16 +53,40 @@ function pressedButton(ch) {
 }
 
 function pressedPi() {
-    document.getElementById("constants1").style.display = "flex";
-    document.getElementById("constants2").style.display = "flex";
+    var variables = document.getElementById("variables");
+    variables.style.display = "block";
+
+    // IE7 only supports appending rows to tbody
+    var tbody = document.createElement("tbody");
+    for (var key in parser.scope) {
+        var tr = document.createElement("tr");
+        if (parser.scope.hasOwnProperty(key)) {
+            //Stringbig += (key + " : " + parser.scope[key] + "<br>");
+            var td = document.createElement("td");
+            var txt = document.createTextNode(key);
+            td.appendChild(txt);
+            tr.appendChild(td);
+            var td2 = document.createElement("td2");
+            var txt = document.createTextNode(parser.scope[key]);
+            td2.onclick = function () {
+                variables.style.display = "none";
+                iString+=key;
+                print();
+            };
+            td2.appendChild(txt);
+            tr.appendChild(td2);
+        }
+        tbody.appendChild(tr);
+    }
+    variables.appendChild(tbody);
 }
+
 function pressedkScreen() {
     document.getElementById("plot").style.display = "none";
 }
 
 function pressedConstant(ch) {
-    document.getElementById("constants1").style.display = "none";
-    document.getElementById("constants2").style.display = "none";
+    document.getElementById("variables").style.display = "none";
     iString += ch;
     print();
 }
@@ -79,8 +98,12 @@ function plot() {
             width: screen.width + 20,
             height: screen.width,
             target: '#plot',
-            yAxis: {domain: [-1, 1]},
-            xAxis: {domain: [8, 24]},
+            yAxis: {
+                domain: [-1, 1]
+            },
+            xAxis: {
+                domain: [8, 24]
+            },
             data: [{
                 fn: iString,
                 sampler: 'builtIn', // this will make function-plot use the evaluator of math.js
@@ -103,14 +126,14 @@ function parseAns() {
         var node = parser.eval(iString);
         var ans = math.format(node, 4);
         console.log(parser.eval(iString));
+        document.getElementById("aScreen1").innerHTML = ans;
     } catch (e) {
+        document.getElementById("aScreen1").innerHTML = "ansError";
         isError = true;
     }
     if (isError) {
-        document.getElementById("aScreen1").innerHTML = "ansError";
         //console.log(document.getElementById("aScreen1").innerHTML);
     } else {
-        document.getElementById("aScreen1").innerHTML = ans;
     }
 }
 

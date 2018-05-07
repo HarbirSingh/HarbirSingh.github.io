@@ -1,22 +1,24 @@
 //importScripts('/cache-polyfill.js');
 
 self.addEventListener('install', function (e) {
-    console.log("asda");
+    //console.log("asda");
     e.waitUntil(
         caches.open('airhorner').then(function (cache) {
-            console.log("asda");
+            //console.log("asda");
             return cache.addAll([
                 '/',
-                '/index.html',
                 '/angle_config.js',
                 '/app.js',
+                '/app2.js',
+                '/index.html',
+                '/mystyle.css',
+                '/manifest.json',
+                '/service-worker.js',
                 '/importjs/d3.min.js',
                 '/importjs/function-plot@1.14.0',
                 '/importjs/katex.min.css',
                 '/importjs/katex.min.js',
                 '/importjs/math.min.js',
-                '/manifest.json',
-                '/service-worker.js',
                 '/images/icons/icon-72x72.png',
                 '/images/icons/icon-96x96.png',
                 '/images/icons/icon-128x128.png',

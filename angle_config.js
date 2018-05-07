@@ -65,6 +65,8 @@ math.import(replacements, {
     override: true
 });
 
+config.angles = localStorage.getItem('drg'); //initialset
+
 function degreeMode() {
     var drgin = localStorage.getItem('drg');
     switch (drgin) {
